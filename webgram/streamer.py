@@ -38,8 +38,12 @@ class Streamer:
 
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()
-
-        message: Message = await self.client.get_messages(peer, ids=int(mid))
+        import random
+        n = random.randint(1,2)
+        if n == 1:
+            message: Message = await self.client.get_messages(peer, ids=int(mid))
+        elif n == 2:
+            message: Message = await self.client2.get_messages(peer, ids=int(mid))
 
         if not message or not message.file :
             return web.HTTPNotFound()

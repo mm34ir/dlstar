@@ -113,7 +113,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                         ''.join(f'\n {l}' for l in _code.split('\n'))
                     )
                 
-                    # Get `__ex` from local variables, call it and return the result
                     await locals()['__ex'](self,c,evt)
                     
                     res = buf.getvalue()

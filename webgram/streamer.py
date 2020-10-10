@@ -41,10 +41,13 @@ class Streamer:
         import random
         n = random.randint(1,3)
         if n == 1:
+            print ("1")
             message: Message = await self.client.get_messages(peer, ids=int(mid))
         elif n == 2:
+            print ("2")
             message: Message = await self.client2.get_messages(peer, ids=int(mid))
         elif n == 3:
+            print ("3")
             message: Message = await self.master.get_messages(peer, ids=int(mid))
 
 

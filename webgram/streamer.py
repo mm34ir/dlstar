@@ -35,7 +35,7 @@ class Streamer:
             #mid = request.match_info["mid"]
             return web.Response(text="This link is no longer supported, please create a new link")
             
-        name = request.match_info["name"]
+        #name = request.match_info["name"]
 
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()
@@ -63,6 +63,7 @@ class Streamer:
         file_size = message.file.size
         download_skip = (offset // BLOCK_SIZE) * BLOCK_SIZE
         read_skip = offset - download_skip
+        name = self.get_file_name(message)
 
         if download_skip >= file_size:
             return web.HTTPRequestRangeNotSatisfiable()

@@ -25,10 +25,13 @@ class Streamer:
 
     async def watch_stream(self: 'webgram.BareServer', request: web.Request) -> web.Response:
         
+        rand = 0
+        
         if request.match_info.get("hash"):
             hash = self.decode(request.match_info["hash"]).split(":")
             peer = self.to_int_safe(hash[0])
             mid = hash[1]
+            rand = 1
             
         elif request.match_info.get("h"):
             hash = self.decode(request.match_info["h"])
@@ -45,7 +48,7 @@ class Streamer:
             return web.HTTPNotFound()
         import random
         n = random.randint(1,3)
-        if n == 1:
+        if n == 1 or rand == 1:
             print ("1")
             message: Message = await self.client.get_messages(peer, ids=int(mid))
         elif n == 2:

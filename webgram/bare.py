@@ -35,6 +35,13 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN)
         
+        self.client2 = telethon.TelegramClient(
+            self.config.SESS_NAME,
+            self.config.APP_ID,
+            self.config.API_HASH,
+            loop=loop
+        ).start(bot_token=self.config.BOT_TOKEN)
+        
         self.master = telethon.TelegramClient(
             "Sudo",
             self.config.APP_ID,
@@ -53,6 +60,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             #await asyncio.sleep(1)
             
         @self.client.on(events.NewMessage())
+        @self.client2.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
                 try:

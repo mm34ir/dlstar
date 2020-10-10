@@ -10,6 +10,8 @@ class Config:
         SESS_NAME = "dlstar_bot_client"
         
         BOT_TOKEN = "1215711283:AAFuct-4Kd1-cDaWp4rLENN08oxgNSOx7FI"
+        
+        BOT_TOKEN2 = "1065536817:AAHpPpHQVOGprLOG517xuqDeba4wECwxnUg"
 
         channel = 'UserlandApp'
 

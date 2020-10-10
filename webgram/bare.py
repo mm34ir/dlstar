@@ -36,7 +36,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         ).start(bot_token=self.config.BOT_TOKEN)
         
         self.client2 = telethon.TelegramClient(
-            self.config.SESS_NAME,
+            self.config.SESS_NAME,2
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop

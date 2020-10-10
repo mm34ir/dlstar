@@ -30,6 +30,11 @@ class Streamer:
             peer = self.to_int_safe(hash[0])
             mid = hash[1]
             
+        elif request.match_info.get("h"):
+            hash = self.decode(request.match_info["hash"])
+            peer = self.STATS_CHANNEL
+            mid = hash
+            
         else:
             #peer = self.to_int_safe(request.match_info["peer"])
             #mid = request.match_info["mid"]

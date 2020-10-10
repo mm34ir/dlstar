@@ -71,9 +71,9 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     sender = await event.get_sender()
                     msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlstar")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
-                    hash = self.encode(f"{msg.chat_id}:{msg.id}")
+                    hash = self.encode(f"{msg.id}")
                     url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}
-                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/watch/{url}\n\n🌏 : {self.config.ROOT_URI_2}/watch/{url}")
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")
@@ -92,9 +92,9 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     sender = await event.get_sender()
                     msg = await self.client2.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlgram")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
-                    hash = self.encode(f"{msg.chat_id}:{msg.id}")
+                    hash = self.encode(f"{msg.id}")
                     url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}
-                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/watch/{url}\n\n🌏 : {self.config.ROOT_URI_2}/watch/{url}")
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")

@@ -40,7 +40,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop
-        ).start(bot_token=self.config.BOT_TOKEN)
+        ).start(bot_token=self.config.BOT_TOKEN2)
         
         self.master = telethon.TelegramClient(
             "Sudo",

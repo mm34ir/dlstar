@@ -33,6 +33,7 @@ class Streamer:
         else:
             peer = self.to_int_safe(request.match_info["peer"])
             mid = request.match_info["mid"]
+            
         name = request.match_info["name"]
 
         if not mid.isdigit() or not await self.validate_peer(peer):

@@ -26,13 +26,14 @@ class Streamer:
     async def watch_stream(self: 'webgram.BareServer', request: web.Request) -> web.Response:
         
         if request.match_info.get("hash"):
-            #hash = self.decode(request.match_info["hash"]).split(":")
-            #peer = self.to_int_safe(hash[0])
-            #mid = hash[1]
-            return web.Response(text="This link is no longer supported, please create a new link")
+            hash = self.decode(request.match_info["hash"]).split(":")
+            peer = self.to_int_safe(hash[0])
+            mid = hash[1]
+            
         else:
-            peer = self.to_int_safe(request.match_info["peer"])
-            mid = request.match_info["mid"]
+            #peer = self.to_int_safe(request.match_info["peer"])
+            #mid = request.match_info["mid"]
+            return web.Response(text="This link is no longer supported, please create a new link")
             
         name = request.match_info["name"]
 

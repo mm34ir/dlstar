@@ -69,7 +69,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     return
                 if event.file :
                     sender = await event.get_sender()
-                    msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id}")
+                    msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlstar")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.chat_id}:{msg.id}")
                     url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}
@@ -90,7 +90,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     return
                 if event.file :
                     sender = await event.get_sender()
-                    msg = await self.client2.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id}")
+                    msg = await self.client2.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlgram")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.chat_id}:{msg.id}")
                     url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}

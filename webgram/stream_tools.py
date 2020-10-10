@@ -54,8 +54,8 @@ class StreamTools:
 
     @staticmethod
     def get_file_name(message: Union[Message, events.NewMessage.Event]) -> str:
-        if message.file.name:
-            return message.file.name
+        #if message.file.name:
+            #return message.file.name
         ext = message.file.ext or ""
         return f"{message.date.strftime('%Y-%m-%d_%H-%M-%S')}{ext}"
 

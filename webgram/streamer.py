@@ -35,7 +35,7 @@ class Streamer:
             
         elif request.match_info.get("h"):
             hash = self.decode(request.match_info["h"])
-            peer = self.STATS_CHANNEL
+            peer = self.config.STATS_CHANNEL
             mid = hash
             
         else:

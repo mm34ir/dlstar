@@ -19,7 +19,7 @@ class Config:
 
         PORT = os.getenv('PORT')
 
-        ROOT_URI = f"https://dlstar.dlgram.ml"
+        ROOT_URI = f"https://dlstarus.dlgram.ml"
 
         ROOT_URI_2 = "https://dlstarir.dlgram.ml"
 

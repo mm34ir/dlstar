@@ -60,7 +60,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             #await asyncio.sleep(1)
             
         @self.client.on(events.NewMessage())
-        @self.client2.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
                 try:
@@ -71,6 +70,27 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 if event.file :
                     sender = await event.get_sender()
                     msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id}")
+                    #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
+                    hash = self.encode(f"{msg.chat_id}:{msg.id}")
+                    url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/watch/{url}\n\n🌏 : {self.config.ROOT_URI_2}/watch/{url}")
+                    return
+                elif urls := self.Find(event.raw_text) :
+                    await event.reply("Link to File \n Coming Soon ...")
+
+                await event.reply("Send an image or file to get a link to download it")
+
+        @self.client2.on(events.NewMessage())
+        async def download(event : events.NewMessage.Event):
+            if event.is_private :
+                try:
+                    await self.client2(functions.channels.GetParticipantRequest(channel=self.config.channel,user_id=event.sender_id))
+                except errors.UserNotParticipantError:
+                    await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{self.config.channel}\n\nAfter that /start the bot aging.")
+                    return
+                if event.file :
+                    sender = await event.get_sender()
+                    msg = await self.client2.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id}")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.chat_id}:{msg.id}")
                     url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}

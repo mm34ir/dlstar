@@ -57,7 +57,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             await self.master(functions.account.UpdateStatusRequest(
             offline=False
             ))
-            #await asyncio.sleep(1)
+            await asyncio.sleep(1)
             
         @self.client.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):

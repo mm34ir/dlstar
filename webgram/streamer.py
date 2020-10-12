@@ -26,22 +26,21 @@ class Streamer:
 
     async def watch_stream(self: 'webgram.BareServer', request: web.Request) -> web.Response:
         
-        if request.match_info.get("hash"):
-            hash = self.decode(request.match_info["hash"]).split(":")
-            peer = self.to_int_safe(hash[0])
-            mid = hash[1]
-            
-        elif request.match_info.get("h"):
+        if request.match_info.get("h"):
             hash = self.decode(request.match_info["h"])
             peer = self.config.STATS_CHANNEL
             mid = hash
+            
+        elif request.match_info.get("hash"):
+            hash = self.decode(request.match_info["hash"]).split(":")
+            peer = self.to_int_safe(hash[0])
+            mid = hash[1]
             
         else:
             #peer = self.to_int_safe(request.match_info["peer"])
             #mid = request.match_info["mid"]
             return web.Response(text="This link is no longer supported, please create a new link")
             
-
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()
             
@@ -75,6 +74,7 @@ class Streamer:
         file_size = message.file.size
         download_skip = (offset // BLOCK_SIZE) * BLOCK_SIZE
         read_skip = offset - download_skip
+        
         if request.match_info.get("name"):
             name = request.match_info["name"]
         else:

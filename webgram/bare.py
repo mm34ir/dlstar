@@ -72,7 +72,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlstar")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")
-                    url = f"{hash}" # {urllib.parse.quote(self.get_file_name(event))}
+                    url = f"{hash}/{urllib.parse.quote(self.get_file_name(event))}"
                     await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :

@@ -66,9 +66,9 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 except errors.UserNotParticipantError:
                     await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{self.config.channel}\n\nAfter that /start the bot aging.")
                     return
-                await self.set(str(evt.sender_id),str(evt.date.strftime('%Y-%m-%d_%H-%M-%S')))
                 if event.file :
                     sender = await event.get_sender()
+                    await self.set(evt.sender_id),evt.date.strftime('%Y-%m-%d_%H-%M-%S'))
                     msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlstar")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")

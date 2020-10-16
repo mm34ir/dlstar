@@ -68,7 +68,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     return
                 if event.file :
                     sender = await event.get_sender()
-                    await self.set(evt.sender_id),evt.date.strftime('%Y-%m-%d_%H-%M-%S'))
                     msg = await self.client.send_file(self.config.STATS_CHANNEL, file=event.message.media, caption=f"@{sender.username}|[{event.sender_id}](tg://user?id={event.sender_id})/{event.message.id} dlstar")
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")

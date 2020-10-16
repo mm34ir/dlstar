@@ -6,6 +6,8 @@ if typing.TYPE_CHECKING:
 class Db:
     
     async def set(self: 'webgram.BareServer',key, value):
+        key = str(key)
+        value = star(value)
         try:
             async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
                 if i :
@@ -18,6 +20,7 @@ class Db:
             return e
                 
     async def get(self: 'webgram.BareServer',key):
+        key = str(key)
         async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
             try:
                 if i :

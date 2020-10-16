@@ -61,7 +61,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         @self.client.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
-                await self.set(evt.sender_id , "dlstar")
+                await self.set(event.sender_id , "dlstar")
                 try:
                     await self.client(functions.channels.GetParticipantRequest(channel=self.config.channel,user_id=event.sender_id))
                 except errors.UserNotParticipantError:
@@ -83,7 +83,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         @self.client2.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
-                await self.set(evt.sender_id , "dlgram")
+                await self.set(event.sender_id , "dlgram")
                 try:
                     await self.client2(functions.channels.GetParticipantRequest(channel=self.config.channel,user_id=event.sender_id))
                 except errors.UserNotParticipantError:

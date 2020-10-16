@@ -16,7 +16,7 @@ class Db:
                 return True
         except Exception as e: 
             return e
-                
+               
     async def get(self: 'webgram.BareServer',key):
         async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
             try:

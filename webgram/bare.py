@@ -5,7 +5,7 @@ import asyncio
 import aiohttp
 import urllib.parse
 from . import (
-    Config, StreamTools, Streamer, Checkers,
+    Config, StreamTools, Streamer, Checkers,Db
 )
 import io
 import re
@@ -20,7 +20,7 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 **Result**\n```{}```\n\n**Error**```{}```\u200e'.format
 
 
-class BareServer(Config, StreamTools, Streamer, Checkers ):
+class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     client: telethon.TelegramClient
     
     def __init__(self, loop: asyncio.AbstractEventLoop):

@@ -18,6 +18,8 @@ class Config:
         channel = 'UserlandApp'
 
         STATS_CHANNEL = -1001249461809
+        
+        CONFIG_CHANNEL = -1001428583293
 
         HOST = "127.0.0.1"
 

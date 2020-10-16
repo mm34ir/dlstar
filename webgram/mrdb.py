@@ -9,7 +9,10 @@ if typing.TYPE_CHECKING:
 
 class Db:
     class Kv(dict):
-        async def __init__(self: 'webgram.BareServer', filename=None,autocommit=None):
+        def __init__(self: 'webgram.BareServer'):
+            pass
+            
+        async def create(self: 'webgram.BareServer', filename=None,autocommit=None):
             self.cfile = filename
             if path.exists(filename):
                 self.conn = sqlite3.connect(self.cfile)

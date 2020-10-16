@@ -40,7 +40,8 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN2)
         
-        self.db = self.Kv("test.db",True)
+        self.db = self.Kv()
+        await self.db.create("test.db",True)
         
         self.master = telethon.TelegramClient(
             "Sudo",

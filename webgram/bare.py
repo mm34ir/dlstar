@@ -26,7 +26,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     
     def __init__(self, loop: asyncio.AbstractEventLoop):
         
-        self.db = self.Kv("test.db",True)
+        self.db = await self.Kv("test.db",True)
         
         self.client = telethon.TelegramClient(
             self.config.SESS_NAME,

@@ -10,9 +10,11 @@ class Db:
         value = str(value)
         try:
             async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=f"{key}:", limit=1):
-                if i.message :
-                    await i.edit(f"{key}:{value}")
-                    return "edit"
+                if text := i.message :
+                    if text != f"{key}:{value}":
+                        await i.edit(f"{key}:{value}")
+                        return "edit"
+                    return "It already existed"
             await self.master.send_message(self.config.CONFIG_CHANNEL,f"{key}:{value}")
             return "set"
         except Exception as e: 

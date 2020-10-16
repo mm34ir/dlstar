@@ -7,7 +7,7 @@ import urllib.parse
 from . import (
     Config, StreamTools, Streamer, Checkers
 )
-from . import Db
+from .db import Db
 import io
 import re
 import requests

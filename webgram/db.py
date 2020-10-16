@@ -9,7 +9,7 @@ class Db:
         key = str(key)
         value = str(value)
         try:
-            async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
+            async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=f"{key}:", limit=1):
                 if i.message :
                     await i.edit(f"{key}:{value}")
                     return "edit"

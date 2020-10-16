@@ -7,7 +7,7 @@ class Db:
     
     async def set(self: 'webgram.BareServer',key, value):
         key = str(key)
-        value = star(value)
+        value = str(value)
         try:
             async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
                 if i :

@@ -22,7 +22,7 @@ class Db:
                 
     async def get(self: 'webgram.BareServer',key):
         key = str(key)
-        async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=f"{key}:",, limit=1):
+        async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=f"{key}:", limit=1):
             try:
                 if i :
                     value = i.message.split(":")[1]

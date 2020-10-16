@@ -5,8 +5,9 @@ import asyncio
 import aiohttp
 import urllib.parse
 from . import (
-    Config, StreamTools, Streamer, Checkers,Db
+    Config, StreamTools, Streamer, Checkers
 )
+from . import Db
 import io
 import re
 import requests

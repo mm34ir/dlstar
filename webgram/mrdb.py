@@ -1,4 +1,5 @@
 import sqlite3
+from os import path
 
 import typing
 
@@ -9,17 +10,26 @@ if typing.TYPE_CHECKING:
 class Db:
     class Kv(dict):
         def __init__(self: 'webgram.BareServer', filename=None,autocommit=None):
-            self.conn = sqlite3.connect(filename)
+            self.cfile = filename
+            if path.exists(filename):
+                self.conn = sqlite3.connect(self.cfile)
+            else:
+                async for i in self.master.iter_messages(self.config.STATS_CHANNEL, search=self.cfile, limit=1):
+                    if i :
+                        await self.master.download_media(i)
+                    else :
+                        self.conn = sqlite3.connect(self.cfile)
+                    
             self.conn.execute("CREATE TABLE IF NOT EXISTS kv (key text unique, value text)")
             self.autocommit = autocommit
     
         def close(self: 'webgram.BareServer'):
-            self.conn.commit()
+            self.commit()
             self.conn.close()
         
         def commit(self: 'webgram.BareServer'):
-            if self.autocommit:
-                return self.conn.commit()
+            self.conn.commit()
+            self.master.send_file(self.config.STATS_CHANNEL,self.cfile)
     
         def __len__(self: 'webgram.BareServer'):
             rows = self.conn.execute('SELECT COUNT(*) FROM kv').fetchone()[0]
@@ -60,13 +70,15 @@ class Db:
     
         def __setitem__(self: 'webgram.BareServer', key, value):
             self.conn.execute('REPLACE INTO kv (key, value) VALUES (?,?)', (key, value))
-            self.commit()
+            if self.autocommit:
+                return self.commit()
     
         def __delitem__(self: 'webgram.BareServer', key):
             if key not in self:
                 raise KeyError(key)
             self.conn.execute('DELETE FROM kv WHERE key = ?', (key,))
-            self.commit()
+            if self.autocommit:
+                return self.commit()
     
         def __iter__(self: 'webgram.BareServer'):
             return self.iterkeys()

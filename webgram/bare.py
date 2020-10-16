@@ -21,7 +21,7 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 **Result**\n```{}```\n\n**Error**```{}```\u200e'.format
 
 
-class BareServer(Config, StreamTools, Streamer, Checkers ):
+class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     client: telethon.TelegramClient
     
     def __init__(self, loop: asyncio.AbstractEventLoop):
@@ -61,6 +61,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers ):
         @self.client.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
+                await self.set(evt.sender_id , "dlstar")
                 try:
                     await self.client(functions.channels.GetParticipantRequest(channel=self.config.channel,user_id=event.sender_id))
                 except errors.UserNotParticipantError:
@@ -82,6 +83,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers ):
         @self.client2.on(events.NewMessage())
         async def download(event : events.NewMessage.Event):
             if event.is_private :
+                await self.set(evt.sender_id , "dlgram")
                 try:
                     await self.client2(functions.channels.GetParticipantRequest(channel=self.config.channel,user_id=event.sender_id))
                 except errors.UserNotParticipantError:

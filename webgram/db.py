@@ -10,11 +10,11 @@ class Db:
         value = str(value)
         try:
             async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
-                if i :
+                if i.message :
                     await i.edit(f"{key}:{value}")
                     return "edit"
-                await self.master.send_message(self.config.CONFIG_CHANNEL,f"{key}:{value}")
-                return "set"
+            await self.master.send_message(self.config.CONFIG_CHANNEL,f"{key}:{value}")
+            return "set"
         except Exception as e: 
             return e
                 

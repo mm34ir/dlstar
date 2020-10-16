@@ -8,8 +8,7 @@ class Db:
     async def set(self: 'webgram.BareServer',key, value):
         try:
             x = [i async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1) if i.message]
-            print (x)
-            if x[0] :
+            if x :
                 await x[0].message.edit(f"{key}:{value}")
                 return True
             else:

@@ -6,20 +6,20 @@ if typing.TYPE_CHECKING:
 class Db:
     
     async def set(self: 'webgram.BareServer',key, value):
-        key = str(key)
-        value = str(value)
         try:
+            x = 0
             async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
-                if i :
-                    await i.edit(f"{key}:{value}")
-                    return True
+                x = i
+            if x.message :
+                await i.edit(f"{key}:{value}")
+                return True
+            else:
                 await self.client.send_message(self.config.CONFIG_CHANNEL,f"{key}:{value}")
                 return True
         except Exception as e: 
             return e
                 
     async def get(self: 'webgram.BareServer',key):
-        key = str(key)
         async for i in self.master.iter_messages(self.config.CONFIG_CHANNEL, search=key, limit=1):
             try:
                 if i :

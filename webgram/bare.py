@@ -7,7 +7,7 @@ import urllib.parse
 from . import (
     Config, StreamTools, Streamer, Checkers,
 )
-from .mrdb import Db
+from .mrdb import Kv
 import io
 import re
 import requests
@@ -21,12 +21,10 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 **Result**\n```{}```\n\n**Error**```{}```\u200e'.format
 
 
-class BareServer(Config, StreamTools, Streamer, Checkers , Db):
+class BareServer(Config, StreamTools, Streamer, Checkers , Kv):
     client: telethon.TelegramClient
     
     def __init__(self, loop: asyncio.AbstractEventLoop):
-        
-        self.db = (self.Kv("test.db",True))
         
         self.client = telethon.TelegramClient(
             self.config.SESS_NAME,
@@ -41,6 +39,8 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN2)
+        
+        self.db = Kv.__init__(self,"test.db",True)
         
         self.master = telethon.TelegramClient(
             "Sudo",

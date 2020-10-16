@@ -66,8 +66,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 except errors.UserNotParticipantError:
                     await event.reply(f"First join to our official channel to access the bot or get the newest news about the bot\n\n@{self.config.channel}\n\nAfter that /start the bot aging.")
                     return
-                    
-                await self.set(event.sender_id,event.date.strftime('%Y/%m/%d_%H:%M:%S'))
                 
                 if event.file :
                     sender = await event.get_sender()

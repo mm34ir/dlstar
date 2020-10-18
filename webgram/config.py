@@ -28,6 +28,8 @@ class Config:
         ROOT_URI = f"http://dlstarus.dlgram.ml"
 
         ROOT_URI_2 = "http://dlstarir.dlgram.ml"
+        
+        ROOT_URI_3 = "http://ali.dlgram.ml"
 
         ENCODING = "utf8"
 

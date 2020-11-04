@@ -15,7 +15,7 @@ class Config:
         
         BOT_TOKEN2 = "1065536817:AAHpPpHQVOGprLOG517xuqDeba4wECwxnUg"
         
-        MASTER_TOKEN = "1BJWap1wBu5t91dp6IhIpY4yr2DUMDxQQ53yoELL31tRG1tGwhdv1-HK_U1ekfZ6fWL6bM4L9DurSd8NzP2o_GaYQ6otHllZelzxpHXo4fFI5EzSUr7ll7rwroZgQzPo101YfBK5vmwc-jxm_S_OULvPbTb_kxbHajTi2jiA7YxjlTWut4Vv6JvJui3QPvB8wNd0800IyrNeP3G744cseKLg2nxwNYeM1DnAyuqbKolWMfohzEGuR22DApSIB4rwLdBDS2BjuuNr9icioviDNjmQfjGX-YHrgHz3LxUMt5D5VNQug3MbubqPxqI21aJN52FpD9tqK6kL_JXxsD3_d2g85G04wUrk="
+        MASTER_TOKEN = "1BJWap1wBu0f-3-Nx7pHlvLkJScNkdsjsDF_VyHqpXACUIjwwoV3bDXgKKw-HRFKGs2ZfHsoHFWJJcTz7UIiimKVaeTRalRXpF5jtYia56FwAoa6ZyloVo1ziE8e5msdQQsmNBEngQFWUZ3cSSzbuiY7nRlIY1y5RkwaJcWHj4bwn-OLvyGvKjlZWzdhFMoD_rK2TJRysgyFSgwTmTVt5ss_wkMNwehZG5af1A9zC_svO3EdQEvTDRkwgDMYR-pFydlfcvWpO41qUPR_4gk4WsmrLm9qaH91ZQpBpY_odJTAa1WBG5IjQlNVXo0niOXSpQT2mGiRAEBfsnKzbfrAHh9Jv7tKQz2I="
 
         channel = 'UserlandApp'
 

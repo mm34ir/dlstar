@@ -49,7 +49,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start()
-        
+        print (self.master.session.save())
         
         @self.master.on(events.NewMessage())
         async def set_online(event : events.NewMessage.Event):

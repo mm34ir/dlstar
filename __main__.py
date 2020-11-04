@@ -3,11 +3,12 @@ import webgram
 import aiohttp.web
 import logging
 logging.basicConfig(level=logging.ERROR)
+#logging.basicConfig(level=logging.DEBUG)
 
 def main():
     loop = asyncio.get_event_loop()
     server = webgram.BareServer(loop)
-    app = aiohttp.web.Application(client_max_size=1024*1024*20)
+    app = aiohttp.web.Application(loop=loop,client_max_size=1024*1024*20)
     app.add_routes([
         aiohttp.web.get('/', server.hello),
         aiohttp.web.get('/m3u/{peer}', server.grab_m3u),

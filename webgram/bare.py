@@ -14,6 +14,8 @@ import requests
 from contextlib import redirect_stdout
 from subprocess import PIPE, STDOUT, Popen
 from telethon.tl.types import InputFile
+from telethon.sessions import StringSession
+
 
 ERROR = "**Expression:**\n```{}```\n\n**{}**: {}".format
 SUCCESS = '**Expression:**\n```{}```\n\n**Result**\n```{}```\u200e'.format
@@ -30,24 +32,23 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.SESS_NAME,
             self.config.APP_ID,
             self.config.API_HASH,
-            #loop=loop
+            loop=loop
         ).start(bot_token=self.config.BOT_TOKEN)
         
         self.client2 = telethon.TelegramClient(
             self.config.SESS_NAME2,
             self.config.APP_ID,
             self.config.API_HASH,
-            #loop=loop
+            loop=loop
         ).start(bot_token=self.config.BOT_TOKEN2)
         
         
         self.master = telethon.TelegramClient(
-            "Sudo3",
+            StringSession(self.config.MASTER_TOKEN),
             self.config.APP_ID,
             self.config.API_HASH,
-            #loop=loop
+            loop=loop
         ).start()
-        
         
         
         @self.master.on(events.NewMessage())
@@ -73,7 +74,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")
                     url = f"{hash}/{urllib.parse.quote(self.get_file_name(event))}"
-                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}") #\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")
@@ -95,7 +96,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")
                     url = f"{hash}/{urllib.parse.quote(self.get_file_name(event))}"
-                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}") #\n\n🌏 : {self.config.ROOT_URI_2}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")

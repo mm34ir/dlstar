@@ -51,6 +51,10 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         ).start()
         print (self.master.session.save())
         
+        self.client.idle()
+        self.client2.idle()
+        
+        
         @self.master.on(events.NewMessage())
         async def set_online(event : events.NewMessage.Event):
         	

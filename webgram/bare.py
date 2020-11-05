@@ -51,9 +51,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         ).start()
         print (self.master.session.save())
         
-        self.client.idle()
-        self.client2.idle()
-        
         
         @self.master.on(events.NewMessage())
         async def set_online(event : events.NewMessage.Event):
@@ -63,8 +60,8 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             ))
             await asyncio.sleep(1)
             
-        @self.client.on(events.NewMessage())
-        @self.client2.on(events.NewMessage())
+        @self.client.on(events.NewMessage)
+        @self.client2.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):
             if event.is_private :
                 #await self.set(event.sender_id , "dlstar")

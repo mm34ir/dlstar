@@ -31,7 +31,7 @@ class Config:
 
         ROOT_URI_2 = "http://dlstarir.dlgram.ml"
         
-        ROOT_URI_3 = "http://ali.dlgram.ml"
+        ROOT_URI_3 = "http://mmad.dlgram.ml"
 
         ENCODING = "utf8"
 

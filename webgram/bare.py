@@ -44,7 +44,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         
         
         self.master = telethon.TelegramClient(
-            StringSession(),
+            StringSession(self.config.MASTER_TOKEN),
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop

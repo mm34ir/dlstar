@@ -1,5 +1,3 @@
-GNU nano 2.9.3                                                         main.py
-
 import asyncio
 import webgram
 import aiohttp.web

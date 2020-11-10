@@ -49,7 +49,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start()
-        print (self.master.session.save())"""
+        print (self.master.session.save())
         
         
         @self.master.on(events.NewMessage())
@@ -58,7 +58,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             await self.master(functions.account.UpdateStatusRequest(
             offline=False
             ))
-            await asyncio.sleep(1)
+            await asyncio.sleep(1)"""
             
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):

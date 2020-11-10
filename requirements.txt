@@ -4,5 +4,5 @@ pillow
 werkzeug
 aiohttp
 Telethon
-httpx
 requests
+gunicorn

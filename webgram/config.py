@@ -15,7 +15,7 @@ class Config:
         
         BOT_TOKEN2 = "1065536817:AAHpPpHQVOGprLOG517xuqDeba4wECwxnUg"
         
-        MASTER_TOKEN = "1BJWap1wBuz5nSGcuhknNaRVmbD6TbtZWjtnqXuqCHBZAbdHdTj21ly4gFAH7cE0V9u9hlvkE-vLil1THsw1kCSr7RqECzmoew8CHzybqzlm6cMCafitLuoKOm9k6SuAXY31EUHnyvwZbbZR2HqFipkV2W3ZnUPCWWYG5aw1abJsKg1ndEdruuzz0bbpWwSwhNSgOgGQKsFxuA5XDVUqMgnZZscBvit-9qbD81BTPkmp4E9rhi-T4tQQjzTN3Ti8wtZ3yJdFDGKicLCbxx8Cltp0XVrcFd4vM-nMykLlkROXFSBMgnt1WumqBBjsSRyj7V5sc8uw_XG3VrNf121tds7zpqZTOcLA="
+        MASTER_TOKEN = ""
         
         channel = 'UserlandApp'
 

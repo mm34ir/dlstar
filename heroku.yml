@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: python3 __main__.py
+  web: gunicorn main:main --bind localhost:8080 --worker-class aiohttp.GunicornWebWorker

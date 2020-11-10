@@ -29,21 +29,21 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     def __init__(self, loop: asyncio.AbstractEventLoop):
         
         self.client = telethon.TelegramClient(
-            self.config.SESS_NAME,
+            StringSession(), #self.config.SESS_NAME,
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN)
         
         self.client2 = telethon.TelegramClient(
-            self.config.SESS_NAME2,
+            StringSession(), #self.config.SESS_NAME2,
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN2)
         
         
-        self.master = telethon.TelegramClient(
+        """self.master = telethon.TelegramClient(
             StringSession(self.config.MASTER_TOKEN),
             self.config.APP_ID,
             self.config.API_HASH,
@@ -58,7 +58,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             await self.master(functions.account.UpdateStatusRequest(
             offline=False
             ))
-            await asyncio.sleep(1)
+            await asyncio.sleep(1)"""
             
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):
@@ -105,7 +105,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 await event.reply("Send an image or file to get a link to download it")
 
 
-        @self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
+        """@self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
         async def exec_python(evt):
             c = self.master
             try:
@@ -174,4 +174,4 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         
         
             except Exception as e:
-                await evt.edit(ERROR(code, e.__class__.__name__, e))
+                await evt.edit(ERROR(code, e.__class__.__name__, e))"""

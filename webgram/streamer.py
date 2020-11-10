@@ -50,8 +50,8 @@ class Streamer:
             message: Message = await self.client.get_messages(peer, ids=int(mid))
         elif rand == 2:
             message: Message = await self.client2.get_messages(peer, ids=int(mid))
-        elif rand == 3:
-            message: Message = await self.master.get_messages(peer, ids=int(mid))
+        #elif rand == 3:
+        #   message: Message = await self.master.get_messages(peer, ids=int(mid))
 
         if not message or not message.file :
             return web.HTTPNotFound()
@@ -104,8 +104,8 @@ class Streamer:
             cls = self.client.iter_download(message.media, offset=download_skip)
         elif rand == 2:
             cls = self.client2.iter_download(message.media, offset=download_skip)
-        elif rand == 3:
-            cls = self.master.iter_download(message.media, offset=download_skip)
+        #elif rand == 3:
+        #   cls = self.master.iter_download(message.media, offset=download_skip)
 
         async for part in cls:
             if len(part) < read_skip:

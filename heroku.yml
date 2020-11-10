@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: gunicorn main:main --bind 0.0.0.0:8080 --worker-class aiohttp.GunicornWebWorker
+  web: gunicorn main:main --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker

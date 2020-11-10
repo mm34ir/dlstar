@@ -1,5 +1,5 @@
 import telethon
-from telethon.sync import TelegramClient
+from telethon.sync import TelegramClient as masterclient
 from telethon import errors, functions, types, events , helpers
 import asyncio
 import aiohttp
@@ -28,14 +28,14 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     
     def __init__(self, loop: asyncio.AbstractEventLoop):
         
-        self.client = TelegramClient(
+        self.client = telethon.TelegramClient(
             StringSession(), #self.config.SESS_NAME,
             self.config.APP_ID,
             self.config.API_HASH,
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN)
         
-        self.client2 = TelegramClient(
+        self.client2 = telethon.TelegramClient(
             StringSession(), #self.config.SESS_NAME2,
             self.config.APP_ID,
             self.config.API_HASH,

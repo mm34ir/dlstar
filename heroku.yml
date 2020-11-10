@@ -2,5 +2,5 @@ build:
   docker:
     web: Dockerfile
 run:
-  #web: gunicorn main:main --bind 0.0.0.0:$PORT --timeout 86400 --worker-class aiohttp.GunicornWebWorker
-  web: python3 main.py
+  web: gunicorn main:main --bind 0.0.0.0:$PORT --timeout 86400 --worker-class aiohttp.GunicornWebWorker
+  #web: python3 main.py

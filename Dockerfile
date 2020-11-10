@@ -14,7 +14,5 @@ ENV PORT = 8080
 
 EXPOSE 8080
 
-#ENTRYPOINT ["python3", "__main__.py"]
-#ENTRYPOINT ["gunicorn", "main:main","--bind","localhost:8080", "--worker-class", "aiohttp.GunicornWebWorker"]
-#CMD gunicorn main:main --timeout 86400 --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker
-CMD python3 main.py
+CMD gunicorn main:main --timeout 86400 -w 10 --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker
+#CMD python3 main.py

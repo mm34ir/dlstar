@@ -16,4 +16,4 @@ EXPOSE 8080
 
 #ENTRYPOINT ["python3", "__main__.py"]
 #ENTRYPOINT ["gunicorn", "main:main","--bind","localhost:8080", "--worker-class", "aiohttp.GunicornWebWorker"]
-CMD gunicorn main:main --bind localhost:8080 --worker-class aiohttp.GunicornWebWorker
+CMD gunicorn main:main --bind 0.0.0.0:8080 --worker-class aiohttp.GunicornWebWorker

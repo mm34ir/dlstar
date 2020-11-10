@@ -56,7 +56,6 @@ app.add_routes([
         
         
 async def main():
-    
     return app
 
 
@@ -67,7 +66,6 @@ if __name__ == "__main__":
             logging.warning("Reloading...")
             cancel_tasks()
             asyncio.set_event_loop(asyncio.new_event_loop())
-            return True
         except GracefulExitException:
             logging.warning("Exiting...")
             cancel_tasks()

@@ -49,7 +49,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start()
-        print (self.master.session.save())
+        print (self.master.session.save())"""
         
         
         @self.master.on(events.NewMessage())
@@ -105,7 +105,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 await event.reply("Send an image or file to get a link to download it")
 
 
-        @self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
+        """@self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
         async def exec_python(evt):
             c = self.master
             try:
@@ -174,4 +174,4 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         
         
             except Exception as e:
-                await evt.edit(ERROR(code, e.__class__.__name__, e))"""
+                await evt.edit(ERROR(code, e.__class__.__name__, e))""" 

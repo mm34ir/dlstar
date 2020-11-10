@@ -34,7 +34,7 @@ def cancel_tasks() -> None:
         task.cancel()
 
 
-def main():
+async def main():
     loop = asyncio.get_event_loop()
     #loop.add_signal_handler(signal.SIGHUP, handle_sighup)
     #loop.add_signal_handler(signal.SIGTERM, handle_sigterm)

@@ -44,7 +44,7 @@ class Streamer:
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()
             
-        rand = random.randint(1,3)
+        rand = random.randint(1,2)
         
         if rand == 1:
             message: Message = await self.client.get_messages(peer, ids=int(mid))

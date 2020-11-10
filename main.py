@@ -72,5 +72,3 @@ if __name__ == "__main__":
             logging.warning("Exiting...")
             cancel_tasks()
             loop.close()
-    else:
-        return app

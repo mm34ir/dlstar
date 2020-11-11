@@ -10,6 +10,7 @@ from . import (
 from .db import Db
 import io
 import re
+import os.path
 import requests
 from contextlib import redirect_stdout
 from subprocess import PIPE, STDOUT, Popen
@@ -49,18 +50,18 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start()
-        print (self.master.session.save())
+        print (self.master.session.save())"""
         
         
-        @self.master.on(events.NewMessage())
+        """@self.master.on(events.NewMessage())
         async def set_online(event : events.NewMessage.Event):
-        	
+            
             await self.master(functions.account.UpdateStatusRequest(
             offline=False
             ))
-            await asyncio.sleep(1)
+            await asyncio.sleep(1)"""
             
-        @self.client.on(events.NewMessage)
+        """@self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):
             if event.is_private :
                 #await self.set(event.sender_id , "dlstar")
@@ -102,10 +103,10 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")
 
-                await event.reply("Send an image or file to get a link to download it")
+                await event.reply("Send an image or file to get a link to download it")"""
 
 
-        @self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
+        """@self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
         async def exec_python(evt):
             c = self.master
             try:
@@ -175,3 +176,4 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         
             except Exception as e:
                 await evt.edit(ERROR(code, e.__class__.__name__, e))"""
+        

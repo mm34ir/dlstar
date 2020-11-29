@@ -1,7 +1,7 @@
 import os 
 
 class Config:
-
+    # noinspection PyPep8Naming
     class config:
         APP_ID = 50807
 

@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y locales python3 python3-pip wget && rm 
 
 ENV LANG en_US.utf8
 
-COPY . /app
+COPY ./web /app
 
 WORKDIR /app
 
@@ -15,4 +15,4 @@ ENV PORT = 8080
 
 EXPOSE 8080
 
-#CMD gunicorn main:main --timeout 86400 -w 5 --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker
+CMD gunicorn main:main --timeout 86400 -w 5 --bind 0.0.0.0:$PORT --worker-class aiohttp.GunicornWebWorker

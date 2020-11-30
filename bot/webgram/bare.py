@@ -66,7 +66,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             loop=loop
         ).start()
         print (self.master.session.save())
-        
+       
         
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):

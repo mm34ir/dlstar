@@ -27,7 +27,7 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 **Result**\n```{}```\n\n**Error**```{}```\u200e'.format
 
 
-async def set_online(evt,c):
+async def set_online(c):
     while me :=  (await c.get_me()) :
         if isinstance(me.status, UserStatusOffline):
             await c(functions.account.UpdateStatusRequest(

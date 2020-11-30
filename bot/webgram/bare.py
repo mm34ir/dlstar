@@ -29,10 +29,7 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 
 async def set_online(evt,c):
     while me :=  (await c.get_me()) :
-        if isinstance(me.status, UserStatusOnline):
-            await evt.respond("I'm Online")
-        elif isinstance(me.status, UserStatusOffline):
-            await evt.respond("I'm Offline, somehow")
+        if isinstance(me.status, UserStatusOffline):
             await self.master(functions.account.UpdateStatusRequest(
             offline=False
             ))
@@ -67,6 +64,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         ).start()
         print (self.master.session.save())
        
+        future = asyncio.ensure_future(looper(self.master))
         
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):

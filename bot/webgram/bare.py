@@ -16,6 +16,10 @@ from contextlib import redirect_stdout
 from subprocess import PIPE, STDOUT, Popen
 from telethon.tl.types import InputFile
 from telethon.sessions import StringSession
+from telethon.tl.types import (
+    UserStatusOnline,
+    UserStatusOffline,
+)
 
 ERROR = "**Expression:**\n```{}```\n\n**{}**: {}".format
 SUCCESS = '**Expression:**\n```{}```\n\n**Result**\n```{}```\u200e'.format
@@ -23,6 +27,18 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 **Result**\n```{}```\n\n**Error**```{}```\u200e'.format
 
 
+async def set_online(evt,c):
+    while me :=  (await c.get_me()) :
+        if isinstance(me.status, UserStatusOnline):
+            await evt.respond("I'm Online")
+        elif isinstance(me.status, UserStatusOffline):
+            await evt.respond("I'm Offline, somehow")
+            await self.master(functions.account.UpdateStatusRequest(
+            offline=False
+            ))
+            await asyncio.sleep(1)
+ 
+ 
 class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     client: telethon.TelegramClient
     
@@ -52,14 +68,6 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         print (self.master.session.save())
         
         
-        @self.master.on(events.NewMessage())
-        async def set_online(event : events.NewMessage.Event):
-            
-            await self.master(functions.account.UpdateStatusRequest(
-            offline=False
-            ))
-            await asyncio.sleep(1)
-            
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):
             if event.is_private :

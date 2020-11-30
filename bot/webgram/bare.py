@@ -64,7 +64,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
         ).start()
         print (self.master.session.save())
        
-        future = asyncio.ensure_future(looper(self.master))
+        future = asyncio.ensure_future(set_online(self.master))
         
         @self.client.on(events.NewMessage)
         async def download(event : events.NewMessage.Event):

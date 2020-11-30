@@ -30,7 +30,7 @@ SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
 async def set_online(evt,c):
     while me :=  (await c.get_me()) :
         if isinstance(me.status, UserStatusOffline):
-            await self.master(functions.account.UpdateStatusRequest(
+            await c(functions.account.UpdateStatusRequest(
             offline=False
             ))
             await asyncio.sleep(1)

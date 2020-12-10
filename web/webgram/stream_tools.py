@@ -24,9 +24,12 @@ class StreamTools:
             "dl:(?P<n>\d)",
             lambda m: f"dl:{int(m.groups('n')[0])+1}" ,
             message.text)
-            await message.edit(result)
+            try:
+                await message.edit(result)
+            except Exception as e:
+                pass
         else:
-            await message.edit(f"{message.text}\ndl:1")
+            await message.edit(f"{message.text}\n dl:1")
 
     @staticmethod
     def Find(string): 

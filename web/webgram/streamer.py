@@ -84,6 +84,9 @@ class Streamer:
         if read_skip > BLOCK_SIZE:
             return web.HTTPInternalServerError()
 
+        if request.headers.get("ip",0) != request.remote :
+            await self.Dl_numbers(message)
+            
         resp = web.StreamResponse(
             headers={
                 'Content-Type': message.file.mime_type, #'application/octet-stream',
@@ -91,6 +94,7 @@ class Streamer:
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),
                 "Content-Disposition": f'inline; filename={name}',
+                "ip": request.remote,
             },
 
             status=206 if offset else 200,
@@ -98,7 +102,6 @@ class Streamer:
 
         await resp.prepare(request)
         
-        await self.Dl_numbers(message)
 
         if rand == 1:
             cls = self.client.iter_download(message.media, offset=download_skip)

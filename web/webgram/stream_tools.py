@@ -16,6 +16,20 @@ if typing.TYPE_CHECKING:
 
 
 class StreamTools:
+    
+    @staticmethod
+    async def Dl_numbers(message: Union[Message, events.NewMessage.Event]) -> None:
+        if "dl:" in message.text :
+            result = re.sub(
+            "dl:(?P<n>\d)",
+            lambda m: f"dl:{int(m.groups('n')[0])+1}" ,
+            message.text)
+            await message.edit(result)
+        else:
+            await message.edit(f"{message.text}\ndl:1")
+
+print (result)
+            
 
     @staticmethod
     def Find(string): 

@@ -84,7 +84,7 @@ class Streamer:
         if read_skip > BLOCK_SIZE:
             return web.HTTPInternalServerError()
 
-        if request.headers.get("ip",0) != request.remote :
+        if  offset == 0 :
             await self.Dl_numbers(message)
             
         resp = web.StreamResponse(

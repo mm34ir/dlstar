@@ -83,9 +83,6 @@ class Streamer:
 
         if read_skip > BLOCK_SIZE:
             return web.HTTPInternalServerError()
-
-        if  offset == 0 :
-            await self.Dl_numbers(message)
             
         resp = web.StreamResponse(
             headers={
@@ -118,6 +115,8 @@ class Streamer:
 
             else:
                 await resp.write(part)
+        else:
+            await self.Dl_numbers(message)
 
         return resp
 

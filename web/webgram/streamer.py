@@ -115,8 +115,8 @@ class Streamer:
 
             else:
                 await resp.write(part)
-        else:
-            await self.Dl_numbers(message)
+                
+        await self.Dl_numbers(message)
 
         return resp
 

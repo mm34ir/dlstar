@@ -17,7 +17,7 @@ if typing.TYPE_CHECKING:
 
 class StreamTools:
     
-    async def Dl_numbers(message: Union[Message, events.NewMessage.Event]) -> None:
+    async def Dl_numbers(message) -> None:
         if "dl:" in message.text :
             result = re.sub(
             "dl:(?P<n>\d)",

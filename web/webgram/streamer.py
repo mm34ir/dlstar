@@ -44,16 +44,9 @@ class Streamer:
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()
             
-        rand = random.randint(1,2)
         
-        if rand == 1:
-            message: Message = await self.client.get_messages(peer, ids=int(mid))
-        elif rand == 2:
-            message: Message = await self.client2.get_messages(peer, ids=int(mid))
-
-        if not message or not message.file :
-            return web.HTTPNotFound()
-
+        message: Message = await self.client.get_messages(peer, ids=int(mid))
+        
         offset = request.headers.get("Range", 0)
 
         if not isinstance(offset, int):
@@ -98,11 +91,8 @@ class Streamer:
 
         await resp.prepare(request)
         
-        if rand == 1:
-            cls = self.client.iter_download(message.media, offset=download_skip)
-        elif rand == 2:
-            cls = self.client2.iter_download(message.media, offset=download_skip)
-
+        cls = self.client.iter_download(message.media, offset=download_skip)
+        
         async for part in cls:
             if len(part) < read_skip:
                 read_skip -= len(part)

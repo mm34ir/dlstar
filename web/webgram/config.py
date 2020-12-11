@@ -9,17 +9,7 @@ class Config:
 
         SESS_NAME = "dlstar_bot_client"
         
-        SESS_NAME2 = "dlstar_bot_client2"
-        
-        BOT_TOKEN = "1215711283:AAFuct-4Kd1-cDaWp4rLENN08oxgNSOx7FI"
-        
-        BOT_TOKEN2 = "1065536817:AAHpPpHQVOGprLOG517xuqDeba4wECwxnUg"
-        
-        MASTER_TOKEN = ""
-        
-        channel = 'UserlandApp'
-
-        STATS_CHANNEL = -1001249461809
+        BOT_TOKEN = "1408542385:AAFFMMgYoL9Vjb5KUU0bXxVReUI-qe81xuU"
         
         CONFIG_CHANNEL = -1001428583293
 

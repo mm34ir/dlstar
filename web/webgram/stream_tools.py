@@ -19,7 +19,7 @@ class StreamTools:
     
     @staticmethod
     async def Dl_numbers(message: Union[Message, events.NewMessage.Event]) -> None:
-        if " dl" in message.text :
+        if "dl:" in message.text :
             result = re.sub(
             "dl:(?P<n>\d)",
             lambda m: f"dl:{int(m.groups('n')[0])+1}" ,

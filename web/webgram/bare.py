@@ -17,11 +17,6 @@ from subprocess import PIPE, STDOUT, Popen
 from telethon.tl.types import InputFile
 from telethon.sessions import StringSession
 
-ERROR = "**Expression:**\n```{}```\n\n**{}**: {}".format
-SUCCESS = '**Expression:**\n```{}```\n\n**Result**\n```{}```\u200e'.format
-SUCCESS_BASH = '**Bash expression:**\n```{}```\n\n\
-**Result**\n```{}```\n\n**Error**```{}```\u200e'.format
-
 
 class BareServer(Config, StreamTools, Streamer, Checkers , Db):
     client: telethon.TelegramClient
@@ -34,4 +29,11 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
             self.config.API_HASH,
             loop=loop
         ).start(bot_token=self.config.BOT_TOKEN)
+        
+        self.client2 = telethon.TelegramClient(
+            StringSession(), #self.config.SESS_NAME2,
+            self.config.APP_ID,
+            self.config.API_HASH,
+            loop=loop
+        ).start(bot_token=self.config.BOT_TOKEN2)
         

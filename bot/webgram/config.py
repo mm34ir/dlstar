@@ -23,6 +23,10 @@ class Config:
         
         CONFIG_CHANNEL = -1001428583293
 
+        HOST = "127.0.0.1"
+
+        PORT = os.getenv('PORT')
+
         ROOT_URI = f"http://dlstarus.dlgram.ml"
 
         ROOT_URI_2 = "http://dlstarir.dlgram.ml"
@@ -30,3 +34,6 @@ class Config:
         ROOT_URI_3 = "http://mmd.dlgram.ml"
 
         ENCODING = "utf8"
+
+
+        # ALLOWED_EXT = ["mkv", "mp4", "flv"]

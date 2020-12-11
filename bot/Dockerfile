@@ -1,4 +1,4 @@
-FROM python3:latest
+FROM python3.9
 
 COPY . /bot
 

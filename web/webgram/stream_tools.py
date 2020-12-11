@@ -25,7 +25,7 @@ class StreamTools:
                 "dl:(?P<n>\d)",
                 lambda m: f"dl:{int(m.groups('n')[0])+1}" ,
                 message.text)
-                    await message.edit(result)
+                await message.edit(result)
             else:
                     await message.edit(f"{message.text}\n dl:1")
         except Exception as e:

@@ -7,6 +7,7 @@ import signal
 logging.basicConfig(level=logging.ERROR)
 #logging.basicConfig(level=logging.DEBUG)
 
+
 class AioHttpAppException(BaseException):
     """An exception specific to the AioHttp application."""
 

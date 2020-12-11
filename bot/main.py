@@ -1,6 +1,5 @@
 import asyncio
 import webgram
-import aiohttp.web
 import logging
 from concurrent.futures import CancelledError
 import signal
@@ -39,20 +38,15 @@ loop = asyncio.get_event_loop()
 loop.add_signal_handler(signal.SIGHUP, handle_sighup)
 loop.add_signal_handler(signal.SIGTERM, handle_sigterm)
 server = webgram.BareServer(loop)
-        
-        
-async def main():
-    return app
 
 
-if __name__ == "__main__":
-        try:
-            loop.run_forever()
-        except ResetException:
-            logging.warning("Reloading...")
-            cancel_tasks()
-            asyncio.set_event_loop(asyncio.new_event_loop())
-        except GracefulExitException:
-            logging.warning("Exiting...")
-            cancel_tasks()
-            loop.close()
+try:
+    loop.run_forever()
+except ResetException:
+    logging.warning("Reloading...")
+    cancel_tasks()
+    asyncio.set_event_loop(asyncio.new_event_loop())
+except GracefulExitException:
+    logging.warning("Exiting...")
+    cancel_tasks()
+    loop.close()

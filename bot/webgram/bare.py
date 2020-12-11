@@ -110,7 +110,7 @@ class BareServer(Config, StreamTools, Streamer, Checkers , Db):
 
                 await event.reply("Send an image or file to get a link to download it")
 
-
+ 
         @self.master.on(events.NewMessage(pattern=".exec",from_users=138742222))
         async def exec_python(evt):
             c = self.master

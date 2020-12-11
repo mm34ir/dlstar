@@ -2,7 +2,6 @@ import telethon
 from telethon.sync import TelegramClient as masterclient
 from telethon import errors, functions, types, events , helpers
 import asyncio
-import aiohttp
 import urllib.parse
 from . import (
     Config, StreamTools

@@ -102,8 +102,6 @@ class Streamer:
             cls = self.client.iter_download(message.media, offset=download_skip)
         elif rand == 2:
             cls = self.client2.iter_download(message.media, offset=download_skip)
-            
-        asyncio.ensure_future(self.Dl_numbers(message))
 
         async for part in cls:
             if len(part) < read_skip:
@@ -114,6 +112,7 @@ class Streamer:
             else:
                 await resp.write(part)
                 
+        asyncio.gather(self.Dl_numbers(message))
         return resp
 
 

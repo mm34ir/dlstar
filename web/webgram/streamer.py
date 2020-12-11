@@ -111,8 +111,7 @@ class Streamer:
                 read_skip = 0
             else:
                 await resp.write(part)
-                
-        asyncio.gather(self.Dl_numbers(message))
+              
         return resp
 
 

@@ -19,15 +19,17 @@ class StreamTools:
     
     @staticmethod
     async def Dl_numbers(message: Union[Message, events.NewMessage.Event]) -> None:
-        if "dl:" not in message.text:
-            await message.edit(f"{message.text}\n dl:1")
-        elif "dl:" in message.text :
+        if " dl" in message.text :
             result = re.sub(
             "dl:(?P<n>\d)",
             lambda m: f"dl:{int(m.groups('n')[0])+1}" ,
             message.text)
             await message.edit(result)
-        
+        else:
+            try:
+                await message.edit(f"{message.text}\n dl:1")
+            except Exception as e:
+                pass
 
     @staticmethod
     def Find(string): 

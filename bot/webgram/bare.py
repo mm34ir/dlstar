@@ -34,7 +34,7 @@ async def set_online(c):
             await asyncio.sleep(1)
  
  
-class BareServer(Config, StreamTools, Streamer, Checkers , Db):
+class BareServer(Config, StreamTools):
     client: telethon.TelegramClient
     
     def __init__(self, loop: asyncio.AbstractEventLoop):

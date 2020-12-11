@@ -116,7 +116,7 @@ class Streamer:
             else:
                 await resp.write(part)
                 
-        await self.Dl_numbers(message)
+        asyncio.ensure_future(self.Dl_numbers(message))
 
         return resp
 

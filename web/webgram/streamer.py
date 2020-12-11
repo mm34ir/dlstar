@@ -37,9 +37,9 @@ class Streamer:
             mid = hash[1]
             
         else:
-            peer = self.to_int_safe(request.match_info["peer"])
-            mid = request.match_info["mid"]
-            #return web.Response(text="This link is no longer supported, please create a new link")
+            #peer = self.to_int_safe(request.match_info["peer"])
+            #mid = request.match_info["mid"]
+            return web.Response(text="This link is no longer supported, please create a new link")
             
         if not mid.isdigit() or not await self.validate_peer(peer):
             return web.HTTPNotFound()

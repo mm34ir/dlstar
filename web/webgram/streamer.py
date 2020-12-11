@@ -91,7 +91,6 @@ class Streamer:
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),
                 "Content-Disposition": f'inline; filename={name}',
-                "ip": request.remote,
             },
 
             status=206 if offset else 200,
@@ -99,26 +98,24 @@ class Streamer:
 
         await resp.prepare(request)
         
-
         if rand == 1:
             cls = self.client.iter_download(message.media, offset=download_skip)
         elif rand == 2:
             cls = self.client2.iter_download(message.media, offset=download_skip)
             
+        asyncio.ensure_future(self.Dl_numbers(message))
+
         async for part in cls:
             if len(part) < read_skip:
                 read_skip -= len(part)
-
             elif read_skip:
                 await resp.write(part[read_skip:])
                 read_skip = 0
-
             else:
                 await resp.write(part)
                 
-        asyncio.ensure_future(self.Dl_numbers(message))
-
         return resp
+
 
     async def grab_m3u(self: 'webgram.BareServer', request: web.Request) -> web.Response:
         peer = self.to_int_safe(request.match_info["peer"])

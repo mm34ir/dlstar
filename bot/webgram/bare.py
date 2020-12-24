@@ -4,12 +4,17 @@ from telethon import errors, functions, types, events , helpers
 import asyncio
 import aiohttp
 import urllib.parse
-from telethon.sessions import StringSession
-import io , sys
 from . import (
-    Config,
-    StreamTools
+    Config, StreamTools
 )
+import io
+import re
+import os.path
+import requests
+from contextlib import redirect_stdout
+from subprocess import PIPE, STDOUT, Popen
+from telethon.tl.types import InputFile
+from telethon.sessions import StringSession
 from telethon.tl.types import (
     UserStatusOnline,
     UserStatusOffline,

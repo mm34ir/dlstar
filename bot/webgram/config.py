@@ -19,7 +19,7 @@ class Config:
         
         CONFIG_CHANNEL = -1001428583293
 
-        ROOT_URI = f"http://dlstarus.dlgram.ml"
+        ROOT_URI = f"http://dl1.dlgram.ml"
 
         ROOT_URI_2 = "http://dlstarir.dlgram.ml"
         

@@ -40,10 +40,6 @@ loop.add_signal_handler(signal.SIGHUP, handle_sighup)
 loop.add_signal_handler(signal.SIGTERM, handle_sigterm)
 server = webgram.BareServer(loop)
         
-        
-async def main():
-    return app
-
 
 if __name__ == "__main__":
         try:

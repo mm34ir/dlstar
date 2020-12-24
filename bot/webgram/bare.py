@@ -4,18 +4,12 @@ from telethon import errors, functions, types, events , helpers
 import asyncio
 import aiohttp
 import urllib.parse
-from . import (
-    Config, StreamTools, Streamer, Checkers
-)
-from .db import Db
-import io
-import re
-import os.path
-import requests
-from contextlib import redirect_stdout
-from subprocess import PIPE, STDOUT, Popen
-from telethon.tl.types import InputFile
 from telethon.sessions import StringSession
+import io , sys
+from . import (
+    Config,
+    StreamTools
+)
 from telethon.tl.types import (
     UserStatusOnline,
     UserStatusOffline,
@@ -36,7 +30,7 @@ async def set_online(c):
             await asyncio.sleep(1)
  
  
-class BareServer(Config, StreamTools, Streamer, Checkers , Db):
+class BareServer(Config, StreamTools):
     client: telethon.TelegramClient
     
     def __init__(self, loop: asyncio.AbstractEventLoop):

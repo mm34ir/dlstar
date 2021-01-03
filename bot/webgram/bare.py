@@ -80,7 +80,7 @@ class BareServer(Config, StreamTools):
                     #url = f"{msg.chat_id}/{msg.id}/{urllib.parse.quote(self.get_file_name(event))}"
                     hash = self.encode(f"{msg.id}")
                     url = f"{hash}/{urllib.parse.quote(self.get_file_name(event))}"
-                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url}\n\n🌍 : {self.config.ROOT_URI_2}/w/{url}")
+                    await event.reply(f"Link to download file: \n\n🌍 : {self.config.ROOT_URI}/w/{url} \n\n🌍 : {self.config.ROOT_URI_3}/w/{url}")
                     return
                 elif urls := self.Find(event.raw_text) :
                     await event.reply("Link to File \n Coming Soon ...")

@@ -17,7 +17,7 @@ class Config:
         
         STATS_CHANNEL = -1001249461809
 
-        ROOT_URI = f"http://dl1.dlgram.ml"
+        ROOT_URI = f"http://dlstarus.dlgram.ml"
 
         ROOT_URI_2 = "http://dlstarir.dlgram.ml"
         

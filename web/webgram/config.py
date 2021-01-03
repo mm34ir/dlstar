@@ -11,7 +11,7 @@ class Config:
         
         BOT_TOKEN2 = "1065536817:AAHpPpHQVOGprLOG517xuqDeba4wECwxnUg"
         
-        CONFIG_CHANNEL = -1001428583293
+        STATS_CHANNEL = -1001249461809
 
         HOST = "127.0.0.1"
 

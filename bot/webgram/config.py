@@ -15,7 +15,7 @@ class Config:
         
         channel = 'UserlandApp'
         
-        CONFIG_CHANNEL = -1001428583293
+        STATS_CHANNEL = -1001249461809
 
         ROOT_URI = f"http://dl1.dlgram.ml"
 

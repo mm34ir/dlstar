@@ -2,10 +2,10 @@ version: "2"
 
 services:
 
-  #bot:
-    #build: ./bot
-    #restart: always
-    #command: python3 main.py
+  bot:
+    build: ./bot
+    restart: always
+    command: python3 main.py
 
   web:
     build: ./web
@@ -21,4 +21,3 @@ services:
       - 80:80
     depends_on: 
       - web
-      - bot

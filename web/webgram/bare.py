@@ -18,6 +18,7 @@ from telethon.sessions import StringSession
 
 
 class BareServer(Config, StreamTools, Streamer, Checkers):
+    client: telethon.TelegramClient
     
     def __init__(self):
         

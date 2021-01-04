@@ -6,8 +6,9 @@ from concurrent.futures import CancelledError
 
 logging.basicConfig(level=logging.ERROR)
 #logging.basicConfig(level=logging.DEBUG)
-        
-server = webgram.BareServer()
+
+loop = asyncio.get_event_loop()
+server = webgram.BareServer(loop)
 
 async def main():
     app = aiohttp.web.Application(client_max_size=1024*1024*20)

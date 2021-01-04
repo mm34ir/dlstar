@@ -88,24 +88,21 @@ class Streamer:
 
         resp = web.StreamResponse(
             headers={
-                'Content-Type': message.file.mime_type, #'application/octet-stream',
+                'Content-Type': 'application/octet-stream', #message.file.mime_type,
                 'Accept-Ranges': 'bytes',
+                'Content-Encoding': 'gzip',
+                'Transfer-Encoding': 'chunked',
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),
                 "Content-Disposition": f'inline; filename={name}',
             },
 
-            status=206 if offset else 200,
+            status = 206 if offset else 200,
         )
 
         await resp.prepare(request)
 
-        if rand == 1:
-            cls = self.client.iter_download(message.media, offset=download_skip)
-        elif rand == 2:
-            cls = self.client2.iter_download(message.media, offset=download_skip)
-        #elif rand == 3:
-        #   cls = self.master.iter_download(message.media, offset=download_skip)
+        cls = message.client.iter_download(message.media, offset=download_skip)
 
         async for part in cls:
             if len(part) < read_skip:

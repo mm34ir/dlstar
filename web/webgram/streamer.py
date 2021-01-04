@@ -90,6 +90,7 @@ class Streamer:
             headers={
                 'Content-Type': message.file.mime_type, #'application/octet-stream', 
                 'Accept-Ranges': 'bytes',
+                'Transfer-Encoding': 'chunked',
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),
                 "Content-Disposition": f'inline; filename={name}',
@@ -100,8 +101,8 @@ class Streamer:
 
         await resp.prepare(request)
 
-    
-        cls = message.client.iter_download(message.media, offset=download_skip)
+        if rand == 1 : cls = self.client.iter_download(message.media, offset=download_skip)
+        elif rand == 2 : cls = self.client2.iter_download(message.media, offset=download_skip)
 
         async for part in cls:
             if len(part) < read_skip:

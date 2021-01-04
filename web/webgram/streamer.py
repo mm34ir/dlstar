@@ -88,8 +88,9 @@ class Streamer:
 
         resp = web.StreamResponse(
             headers={
-                'Content-Type': 'application/octet-stream', #message.file.mime_type,
+                'Content-Type': message.file.mime_type, #'application/octet-stream', 
                 'Accept-Ranges': 'bytes',
+                'Content-Encoding': 'gzip',
                 'Transfer-Encoding': 'chunked',
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),

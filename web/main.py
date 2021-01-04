@@ -7,9 +7,9 @@ from concurrent.futures import CancelledError
 logging.basicConfig(level=logging.ERROR)
 #logging.basicConfig(level=logging.DEBUG)
         
-        
+server = webgram.BareServer()
+
 async def main():
-    server = webgram.BareServer()
     app = aiohttp.web.Application(client_max_size=1024*1024*20)
     app.add_routes([
         aiohttp.web.get('/', server.hello),

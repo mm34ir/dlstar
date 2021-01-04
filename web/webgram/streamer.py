@@ -92,7 +92,7 @@ class Streamer:
                 'Accept-Ranges': 'bytes',
                 'Content-Range': f'bytes {offset}-{file_size}/{file_size}',
                 "Content-Length": str(file_size),
-                "Content-Disposition": f'inline; filename={name}',
+                "Content-Disposition": f'attachment; filename={name}',
             },
 
             status=206 if offset else 200,

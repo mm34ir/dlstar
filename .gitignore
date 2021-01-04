@@ -1,6 +1,4 @@
 
 
 __pycache__
-main.pyc
-*.py
-!main.py
+*.pyc

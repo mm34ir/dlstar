@@ -95,13 +95,15 @@ class Streamer:
                 "Content-Disposition": f'inline; filename={name}',
             },
 
-            status = 206 if offset else 200,
+            status=206 if offset else 200,
         )
 
         await resp.prepare(request)
 
-        if rand == 1 : cls = self.client.iter_download(message.media, offset=download_skip)
-        elif rand == 2 : cls = self.client2.iter_download(message.media, offset=download_skip)
+        if rand == 1 :
+            cls = self.client.iter_download(message.media, offset=download_skip)
+        elif rand == 2 :
+            cls = self.client2.iter_download(message.media, offset=download_skip)
 
         async for part in cls:
             if len(part) < read_skip:

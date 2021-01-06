@@ -1,0 +1,4 @@
+# dlstar
+
+install:
+    `pip installl`

@@ -14,3 +14,5 @@ Heroku:
     - `heroku create` or `git:clone -a app`  
     - `heroku stack:set container`  
     - `python deploy.py`  
+
+[@dlstarBot](https://t.me/dlstarbot)

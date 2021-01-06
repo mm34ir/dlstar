@@ -1,6 +1,6 @@
 # dlstar
 
-** Fast stream file telegram on direct link **   
+**Fast stream file telegram on direct link**   
 
 install:  
     - add config keys in */webgram/config.py  

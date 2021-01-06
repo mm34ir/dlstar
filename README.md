@@ -1,6 +1,6 @@
 # dlstar
 
-install:
-\n    - add config keys in */webgram/config.py
-\n    - install docker & docker-compose
-\n    - `docker-compose up`
+install:  
+    - ~add config keys in */webgram/config.py~
+    - **install docker & docker-compose**
+    - `docker-compose up`
